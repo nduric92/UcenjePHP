@@ -46,32 +46,6 @@ create table proizvod(
     skladiste int
 );
 
-create table skladiste(
-    id int not null primary key auto_increment,
-    naziv varchar(50),
-    skladisnikapacitet int
-);
-
-create table narudzba(
-    id int not null primary key auto_increment,
-    brojnarudzbe varchar(50),
-    klijent int,
-    skladiste int
-);
-
-create table klijent(
-    id int not null primary key auto_increment,
-    nazivtvrtke varchar(50),
-    sjediste varchar(50),
-    adresa varchar (100)
-);
-
-create table posiljka(
-    id int not null primary key auto_increment,
-    brojposiljke varchar(50),
-    klijent int,
-    skladiste int
-);
 
 #poveznice izmedju tablica
 
@@ -86,10 +60,4 @@ alter table radnik_smjena add foreign key (smjena) references smjena(id);
 alter table smjena add foreign key (menadzment) references menadzment(id);
 
 alter table proizvod add foreign key (smjena) references smjena(id);
-alter table proizvod add foreign key (skladiste) references skladiste(id);
 
-alter table narudzba add foreign key (skladiste) references skladiste(id);
-alter table narudzba add foreign key (klijent) references klijent(id);
-
-alter table posiljka add foreign key (skladiste) references skladiste (id);
-alter table posiljka add foreign key (klijent) references klijent (id);
