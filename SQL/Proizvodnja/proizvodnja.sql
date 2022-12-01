@@ -42,8 +42,7 @@ create table proizvod(
     naziv varchar(50) not null,
     boja varchar(50),
     cijena decimal(18,2),
-    smjena int,
-    skladiste int
+    smjena int
 );
 
 
