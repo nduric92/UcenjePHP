@@ -151,7 +151,9 @@ inner join muskarac b on a.muskarac = b.sifra
 inner join zena c on b.zena = c.sifra 
 inner join sestra d on c.sestra =d.sifra 
 inner join sestra_svekar e on d.sifra = e.sestra 
-inner join svekar f on f.sifra =e.svekar ;
+inner join svekar f on f.sifra =e.svekar 
+where b.hlace = 'a%' and d.haljina = '%ba%'
+order by b.hlace desc;
 
 #6
 select a.haljina ,a.maraka 
