@@ -128,10 +128,7 @@ insert into cura (sifra,novcica,gustoca,ogrlica)
 values (null,15.13,15.88,5),
 (null,15.13,15.88,5);
 
-update cura  set gustoca=15.77
-where sifra =1;
-update cura set gustoca=15.77
-where sifra =2;
+update cura set gustoca =15.77 where sifra <=2;
 
 #3
 insert into mladic (sifra, suknja,kuna,ekstroventno,dukserica)
