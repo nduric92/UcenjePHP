@@ -43,3 +43,6 @@ create table proizvod(
 
 alter table radnik_smjena add foreign key (radnik) references radnik(id);
 alter table radnik_smjena add foreign key (smjena) references smjena(id);
+
+alter table radnik_smjena_proizvod add foreign key (radnik_smjena) references radnik_smjena(id);
+alter table radnik_smjena_proizvod add foreign key (proizvod) references proizvod(id);
