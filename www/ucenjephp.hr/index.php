@@ -5,20 +5,18 @@
     <?php include_once 'head.php'; ?>
   </head>
 
-<body>
-
+  <body>
     <div class="grid-container">
       <?php require_once 'izbornik.php'; ?>
       <div class="grid-x grid-padding-x">
         <div class="large-12 cell">
           <div class="callout" id="tijelo">
             koristite gornji izbornik
-          </div>
-          
+          </div>          
         </div>
         <?php include_once 'podnozje.php'; ?>
       </div>      
     </div>
-    <?php include_once 'skripte.php'; ?>
+      <?php include_once 'skripte.php'; ?>
   </body>
 </html>
