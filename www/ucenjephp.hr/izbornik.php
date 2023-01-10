@@ -26,6 +26,7 @@
         <ul class="submenu menu vertical" data-submenu>
           <li><a href="varijable.php">Varijable</a></li>
           <li><a href="jednakostvarijable.php">Jednakost Varijable</a></li>
+          <li><a href="ugradjenevarijable.php">Ugradjene Varijable</a></li>
         </ul>
       </li>
       

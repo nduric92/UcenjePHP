@@ -13,7 +13,23 @@
 
             <?php
             
+            // = je operator dodjeljivanja //
             $i='2';
+
+            // == je operator provjere vrijednosti //
+            echo $i==2, '<hr>';
+
+            // === je operator provjere vrijednosti i tipa podatka //
+
+            //u ovom slucaju dolar i od gore pod navodnicima je STRING
+            //a u echo ispod je INTIGER sto nije isti tip podatka te dobijamo FALSE koji se ne ispisuje
+            echo $i===2, '<hr>';
+
+            echo $i>1, '<hr>';
+            echo $i>=1, '<hr>';
+            echo $i<1, '<hr>';
+            echo $i<=1, '<hr>';
+            echo $i!=1, '<hr>';
             
             
             
