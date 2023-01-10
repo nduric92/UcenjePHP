@@ -5,7 +5,7 @@
   </head>
 
 <body <?php
-//Dobra praksa otvoreno/zatvoreno unutar atributa elementa
+//Dobra praksa otvoreno/zatvoreno unutar atributa elementa//
 echo 'style="background-color: gray"'?>>
 
     <div class="grid-container">
