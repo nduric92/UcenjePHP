@@ -18,6 +18,8 @@
           <li><a href="ulazniparametri.php?kljuc=Ana&x=5">Ulazni parametri</a></li>
           <li><a href="zadatak1.php?boja=lightblue">Zadatak1</a></li>
           <li><a href="zadatak2.php?grad=Osijek">Zadatak2</a></li>
+          <li><a href="zadatak3.php">Zadatak3</a></li>
+          <li><a href="zadatak4.php">Zadatak4</a></li>
         </ul>
       </li>
 
@@ -28,6 +30,8 @@
           <li><a href="jednakostvarijable.php">Jednakost Varijable</a></li>
           <li><a href="ugradjenevarijable.php">Ugradjene Varijable</a></li>
           <li><a href="operatori.php">Operatori</a></li>
+          <li><a target="_blank" href="uvijetnogrananjeif.php">Uvijetno grananje if</a></li>
+          <li><a target="_blank" href="uvijetnogrananjeswitch.php">Uvijetno grananje switch</a></li>
         </ul>
       </li>
       
