@@ -13,29 +13,30 @@
 
           <?php
           
-          echo $_GET['kljuc'], '<hr>';
-
-          echo '<pre>';
-          print_r($_GET);
-          echo '</pre>', '<hr>';
+          //operator nadolepljivanja .
+          echo 'prvo' . ' drugo', '<hr>';
           
-          echo '<pre>';
-          var_dump($_GET);
-          echo '</pre>', '<hr>';
+          //ovo ne ide
+          $a=[];
+          echo 'prvo ' . $a , '<hr>';
 
-          $broj= $_GET['t'] + 7;
-          echo $broj, ' ', gettype($broj), '<hr>';
+          //operator modulo %
+
+          /*
+          9 : 2 = 4
+          8
+          1 <== ovo je modulo 
+          9 % 2 = 1
+          devet podeljeno s dva je 4, 4 puta dva je 8, razlika je "1" sto pretstavlja modulo
+          */
+
+          echo 9 % 2, '<hr>';
           
-          echo '<pre>';
-          print_r($_SERVER);
-          echo '</pre>', '<hr>';
-
-          echo $_SERVER['HTTP_ACCEPT_LANGUAGE'] , '<hr>';
-
-          echo __DIR__;
-
+          echo 9 / 2;
+          
           
           ?>
+
 
           </div>          
         </div>
