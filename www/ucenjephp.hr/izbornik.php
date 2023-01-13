@@ -32,6 +32,8 @@
           <li><a href="operatori.php">Operatori</a></li>
           <li><a target="_blank" href="uvijetnogrananjeif.php">Uvijetno grananje if</a></li>
           <li><a target="_blank" href="uvijetnogrananjeswitch.php">Uvijetno grananje switch</a></li>
+          <li><a target="_blank" href="forpelja.php">For petlja</a></li>
+          <li><a target="_blank" href="incrementdecrement.php">Increment / Decrement</a></li>
         </ul>
       </li>
       
