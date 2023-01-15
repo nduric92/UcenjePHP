@@ -44,3 +44,55 @@ for($i=1;$i<=100;$i++){
 }
 echo $zbroj;
 
+echo '<hr>';
+
+$broj = 68924;
+$prim=true;
+for($i=2;$i<$broj;$i++){
+    echo 'Provjeravam za ' . $i , '<br>';
+    if($broj%$i===0){
+        $prim=false;
+        // nasilno prekidanje petlje
+        break;
+    }
+}
+echo $broj . ($prim ? ' JE' : ' NIJE') . ' prim broj'; 
+
+echo '<hr>';
+
+$zauzeto=3;
+
+for($i=0;$i<10;$i++){
+    if($i===$zauzeto){
+        // nastavlja od početka petlje (preskače ostatak petlje)
+        continue;
+    }
+    echo $i, '<br>';
+}
+
+echo '<hr>';
+
+// ugnježđivanje petlji
+echo '<table>';
+for($i=1;$i<=10;$i++){
+    echo '<tr>';
+    for($j=1;$j<=10;$j++){
+        echo '<td style="text-align: right;">' . $i * $j, '</td>';
+    }
+    echo '</tr>';
+}
+echo '</table>';
+
+// prekidanje vanjske petlje
+for($i=1;$i<=10;$i++){
+    for($j=1;$j<=10;$j++){
+       if($j===3){
+        break 2; // prekida vanjsku petlju (i unutarnju)
+       }
+    }
+}
+
+// beskonačna petlja
+for(;;){
+break;
+}

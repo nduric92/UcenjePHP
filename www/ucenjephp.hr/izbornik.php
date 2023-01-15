@@ -34,6 +34,8 @@
           <li><a target="_blank" href="uvijetnogrananjeswitch.php">Uvijetno grananje switch</a></li>
           <li><a target="_blank" href="forpelja.php">For petlja</a></li>
           <li><a target="_blank" href="incrementdecrement.php">Increment / Decrement</a></li>
+          <li><a target="_blank" href="nizovi.php">Nizovi</a></li>
+          <li><a target="_blank" href="ugradjeninizovi.php">Ugradjeni nizovi</a></li>
         </ul>
       </li>
       
