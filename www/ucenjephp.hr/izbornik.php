@@ -20,6 +20,7 @@
           <li><a href="zadatak2.php?grad=Osijek">Zadatak2</a></li>
           <li><a href="zadatak3.php">Zadatak3</a></li>
           <li><a href="zadatak4.php">Zadatak4</a></li>
+          <li><a href="zadatak5.php">Zadatak5</a></li>
         </ul>
       </li>
 
