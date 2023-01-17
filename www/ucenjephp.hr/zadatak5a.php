@@ -1,12 +1,13 @@
 <?php
 
-//increment decrement zadatak sa predavanja
-
 $i=2; $j=0; $k=1;
 
-$i += $k++ + --$j;
-$k = $i + $j; 
+$i += $k++ + --$j; // na ovoj linij desno 1 + -1   k=2, j=-1, i=2
+$k = $i + $j; // i=2, j=-1, k=1
 
-echo $i + --$j;
+echo $i + --$j; // i=2, j=-2
 
 
+for($i=0;$i<10;$i=$i+1){
+    echo 'Osijek', '<br>';
+}
