@@ -45,7 +45,8 @@
           </li>
               <li><a target="_blank" href="incrementdecrement.php">Increment / Decrement</a></li>
               <li><a target="_blank" href="nizovi.php">Nizovi</a></li>
-              <li><a target="_blank" href="ugradjeninizovi.php">Ugradjeni nizovi</a></li>          
+              <li><a target="_blank" href="ugradjeninizovi.php">Ugradjeni nizovi</a></li>
+              <li><a href="htmlforme.php">html forme</a></li>          
         </ul>
         </li>
 
@@ -58,6 +59,7 @@
             <li><a href="zadatak4.php">Zadatak4</a></li>
             <li><a href="zadatak5.php">Zadatak5</a></li>
             <li><a target="_blank" href="zadatak5a.php">Zadatak5a</a></li>
+            <li><a target="_blank" href="zadatak6.php">Zadatak6</a></li>
           </ul>
         </li>
       </li>
