@@ -35,7 +35,7 @@ echo '<hr>';
 //iz niza €_SERVER ispisati sve kljuceve i vrednosti 
 //koji u delu naziva kljuca imaju slovo b
 $slovo='b';
-foreach($_SERVER as $k => $v){
+foreach($_SERVER as $k => $v){      //$k - kljuc, $v - vrijednost
     if(strpos(strtolower ($k), $slovo)>0)
     echo 'kljuc ' . str_replace($slovo, '<span style="font-weight: bold">' . $slovo . '</span>', strtolower($k))
      . $k . ' ima vrijednost ' .$v, '<br>';

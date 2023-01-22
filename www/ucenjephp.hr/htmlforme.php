@@ -41,20 +41,20 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
            
         
             <form action="<?=$_SERVER['PHP_SELF']?>" 
-          method="post">
+              method="post">
 
-          <!-- Foundation RWD style, nije baš po PS -->
-          <label> Prvi broj
-            <input type="text" name="pb" value="<?=$pb?>">
-          </label>
+                <!-- Foundation RWD style, nije baš po PS -->
+                <label> Prvi broj
+                  <input type="text" name="pb" value="<?=$pb?>">
+                </label>
 
-          <!-- Tehnički po https://validator.w3.org/ ispravno -->
-          <label for="db">Drugi broj</label>
-          <input type="text" name="db" id="db" value="<?=$db?>">
-          <h1><?=$rez?></h1>
-          <input class="success button expanded" type="submit" value="Izračunaj">
+                <!-- Tehnički po https://validator.w3.org/ ispravno -->
+                <label for="db">Drugi broj</label>
+                <input type="text" name="db" id="db" value="<?=$db?>">
+                <h1><?=$rez?></h1>
+                <input class="success button expanded" type="submit" value="Izračunaj">
         
-          </form>
+            </form>
 
 
 
