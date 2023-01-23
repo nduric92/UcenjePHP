@@ -62,6 +62,15 @@
             <li><a target="_blank" href="zadatak6.php">Zadatak6</a></li>
           </ul>
         </li>
+
+        <li>
+          <a href="#">Fukcije</a>
+          <ul class="submenu menu vertical" data-submenu>
+            <li><a target="_blank" href="funkcije.php">Funkcije php</a></li>
+            <li><a target="_blank" href="mojefunkcije.php">Moje funkcije</a></li>
+            <li><a target="_blank" href="mojefunkcije.php">Moje funkcije</a></li>
+          </ul>
+        </li>
       </li>
       
     </ul>
