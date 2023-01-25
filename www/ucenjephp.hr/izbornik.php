@@ -68,7 +68,17 @@
           <ul class="submenu menu vertical" data-submenu>
             <li><a target="_blank" href="funkcije.php">Funkcije php</a></li>
             <li><a target="_blank" href="mojefunkcije.php">Moje funkcije</a></li>
-            <li><a target="_blank" href="mojefunkcije.php">Moje funkcije</a></li>
+            <li><a target="_blank" href="koristenjefunkcija.php">Koristenje funkcija</a></li>
+            <li><a target="_blank" href="rekurzija.php">Rekurzija</a></li>
+            <li>
+              <a href="#">OOP</a>
+              <ul class="submenu menu vertical" data-submenu>
+              <li><a target="_blank" href="klasaobjekt.php">Klasa Objekt</a></li>
+              <li><a target="_blank" href="ucahurivanje.php">Ucahurivanje</a></li>
+              <li><a target="_blank" href="magicnemetode.php">magicne metode</a></li>
+              <li><a target="_blank" href="nasledjivanje.php"> Nasledjivanje</a></li>
+              </ul>
+            </li>
           </ul>
         </li>
       </li>
