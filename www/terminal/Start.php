@@ -100,12 +100,13 @@ class Start{
     }
 
     private function pregledSmjerova(){
-        echo '--------------------' . PHP_EOL;
+        echo '===========================' . PHP_EOL;
         echo 'Smjerovi u aplikaciji' . PHP_EOL;
+        echo '===========================' . PHP_EOL;
         foreach($this->smjerovi as $smjer){
             echo $smjer->naziv . PHP_EOL;
         }
-        echo '--------------------' . PHP_EOL;
+        echo '===========================' . PHP_EOL;
         $this->smjerIzbornik();
     }
 
