@@ -13,7 +13,7 @@
         <div class="large-12 cell">
           <div class="callout" id="tijelo">
               <?php 
-              
+              /*
                 $sql = 'insert into 
                 smjer(naziv,trajanje,certificiran) 
                 values ';
@@ -31,7 +31,7 @@
                 $izraz->execute();
                 $kraj = microtime(true);
                 
-                echo $kraj - $pocetak;
+                echo $kraj - $pocetak;*/
               ?>
         
           </div>

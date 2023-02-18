@@ -1,6 +1,6 @@
 <?php
 try{
-$dsn='mysql:host=localhost;dbname=edunovapp26;charset=utf8';
+$dsn='mysql:host=localhost;dbname=edunovapp26;charset=utf8mb4';
 $parametri=[
   PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ
 ];

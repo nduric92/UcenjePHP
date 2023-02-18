@@ -67,6 +67,8 @@
         <ul class="submenu menu vertical" data-submenu>
           <li><a href="spajanjenabazu.php">Spajanje na Bazu</a></li>
           <li><a href="unosubazu.php">Unos u Bazu</a></li>
+          <li><a href="formaunosubazu.php">Forma unos u bazu</a></li>
+          <li><a href="formaunosubazuosoba.php">Forma unos u bazu osoba</a></li>
         </ul>
       </li>
       <li>

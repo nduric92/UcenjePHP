@@ -1,5 +1,5 @@
 drop database if exists edunovapp26;
-create database edunovapp26 default charset utf8;
+create database edunovapp26 default charset utf8mb4;
 use edunovapp26;
 
 # c:\xampp\mysql\bin\mysql -uroot --default_character_set=utf8 < C:\Users\djuki\Documents\GitHub\UcenjePHP\SQL\edunovapp26.sql
