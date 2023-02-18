@@ -7,83 +7,79 @@
   <div class="top-bar-left">
     <ul class="dropdown menu" data-dropdown-menu>
       <li>
-        <a href="index.php">
-        Ucenje PHP</a>
-        </li>
+        <a href="index.php">Učenje PHP</a>
+      </li>
       <li class="has-submenu">
-            <a href="#0">Suzivot HTML i PHP</a>
+        <a href="#0">Suživot HTML i PHP</a>
         <ul class="submenu menu vertical" data-submenu>
           <li><a href="helloworld.php">Hello world</a></li>
           <li><a href="kombinacijahtmlphp.php">Kombinacija HTML i PHP</a></li>
-          <li><a href="ulazniparametri.php?kljuc=Ana&x=5">Ulazni parametri</a></li>          
+          <li><a href="ulazniparametri.php?kljuc=Ana&x=5">Ulazni parametri</a></li>
         </ul>
       </li>
-
       <li class="has-submenu">
-            <a href="#0">Osnove PHP jezika</a>
+        <a href="#0">Osnove PHP jezika</a>
         <ul class="submenu menu vertical" data-submenu>
           <li><a href="">Varijable</a>
             <ul class="submenu menu vertical" data-submenu>
-            <li><a href="varijable.php">Varijable</a></li>
-            <li><a href="jednakostvarijable.php">Jednakost Varijable</a></li>
-            <li><a href="ugradjenevarijable.php">Ugradjene Varijable</a></li>
-        </ul>
-      </li>
-
-          <li><a href="operatori.php">Operatori</a></li>
-          <li><a target="_blank" href="uvijetnogrananjeif.php">Uvijetno grananje if</a></li>
-          <li><a target="_blank" href="uvijetnogrananjeswitch.php">Uvijetno grananje switch</a></li>
-          
-          <li>
-            <a href="#">Petlje</a>
-            <ul class="submenu menu vertical" data-submenu>
-              <li><a target="_blank" href="forpelja.php">For petlja</a></li>
-              <li><a target="_blank" href="whilepelja.php">while petlja</a></li>
-              <li><a target="_blank" href="dowhilepelja.php">do while petlja</a></li>
-              <li><a target="_blank" href="foreachpelja.php">for each petlja</a></li>
+              <li><a href="varijable.php">Varijable</a></li>
+              <li><a href="jednakostvarijable.php">Jednakost varijable</a></li>
+              <li><a href="ugradenevarijable.php">Ugrađene varijable</a></li>
             </ul>
           </li>
-              <li><a target="_blank" href="incrementdecrement.php">Increment / Decrement</a></li>
-              <li><a target="_blank" href="nizovi.php">Nizovi</a></li>
-              <li><a target="_blank" href="ugradjeninizovi.php">Ugradjeni nizovi</a></li>
-              <li><a href="htmlforme.php">html forme</a></li>          
+          <li><a href="osnovnioperatori.php">Osnovni operatori</a></li>
+          <li><a target="_blank" href="uvjetnogrananjeif.php">Uvjetno grananje if</a></li>
+          <li><a target="_blank" href="uvjetnogrananjeswitch.php">Uvjetno grananje switch</a></li>
+          <li>
+            <a href="#0">Petlje</a>
+            <ul class="submenu menu vertical" data-submenu>
+              <li><a target="_blank" href="forpetlja.php">For petlja</a></li>
+              <li><a target="_blank" href="whilepetlja.php">While petlja</a></li>
+              <li><a target="_blank" href="dowhilepetlja.php">Do while petlja</a></li>
+              <li><a target="_blank" href="foreachpetlja.php">Foreach petlja</a></li>
+            </ul>
+          </li>
+          <li><a target="_blank" href="incrementdecrement.php">Inkrement / dekrement</a></li>
+          <li><a target="_blank" href="nizovi.php">Nizovi</a></li>
+          <li><a target="_blank" href="ugradeninizovi.php">Ugrađeni nizovi</a></li>
+          <li><a href="forme.php">HTML forme</a></li>
+          <li>
+            <a href="#0">Funkcije</a>
+            <ul class="submenu menu vertical" data-submenu>
+              <li><a target="_blank" href="funkcije.php">Funkcije</a></li>
+              <li><a target="_blank" href="koristenjefunkcija.php">Korištenje vlastitih funkcija</a></li>
+              <li><a target="_blank" href="rekurzija.php">Rekurzija</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#0">OOP</a>
+            <ul class="submenu menu vertical" data-submenu>
+              <li><a target="_blank" href="klasaobjekt.php">Klasa/objekt</a></li>
+              <li><a target="_blank" href="ucahurivanje.php">Učahurivanje</a></li>
+              <li><a target="_blank" href="magicnemetode.php">Magične metode</a></li>
+              <li><a target="_blank" href="nasljedivanje.php">Nasljeđivanje</a></li>
+            </ul>
+          </li>
         </ul>
-        </li>
-
-        <li>
-          <a href="#">zadaci</a>
-          <ul class="submenu menu vertical" data-submenu>
-            <li><a href="zadatak1.php?boja=lightblue">Zadatak1</a></li>
-            <li><a href="zadatak2.php?grad=Osijek">Zadatak2</a></li>
-            <li><a href="zadatak3.php">Zadatak3</a></li>
-            <li><a href="zadatak4.php">Zadatak4</a></li>
-            <li><a href="zadatak5.php">Zadatak5</a></li>
-            <li><a target="_blank" href="zadatak5a.php">Zadatak5a</a></li>
-            <li><a target="_blank" href="zadatak6.php">Zadatak6</a></li>
-          </ul>
-        </li>
-
-        <li>
-          <a href="#">Fukcije</a>
-          <ul class="submenu menu vertical" data-submenu>
-            <li><a target="_blank" href="funkcije.php">Funkcije php</a></li>
-            <li><a target="_blank" href="mojefunkcije.php">Moje funkcije</a></li>
-            <li><a target="_blank" href="koristenjefunkcija.php">Koristenje funkcija</a></li>
-            <li><a target="_blank" href="rekurzija.php">Rekurzija</a></li>
-            <li>
-              <a href="#">OOP</a>
-              <ul class="submenu menu vertical" data-submenu>
-              <li><a target="_blank" href="klasaobjekt.php">Klasa Objekt</a></li>
-              <li><a target="_blank" href="ucahurivanje.php">Ucahurivanje</a></li>
-              <li><a target="_blank" href="magicnemetode.php">magicne metode</a></li>
-              <li><a target="_blank" href="nasledjivanje.php"> Nasledjivanje</a></li>
-              </ul>
-            </li>
-          </ul>
-        </li>
       </li>
-      
+      <li class="has-submenu">
+        <a href="#0">Rad s Bazom podataka</a>
+        <ul class="submenu menu vertical" data-submenu>
+          <li><a href="spajanjenabazu.php">Spajanje na Bazu</a></li>
+          <li><a href="unosubazu.php">Unos u Bazu</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#0">Zadaci</a>
+        <ul class="submenu menu vertical" data-submenu>
+          <li><a href="zadatak1.php?boja=red">Zadatak 1</a></li>
+          <li><a href="zadatak2.php?grad=Osijek">Zadatak 2</a></li>
+          <li><a target="_blank" href="zadatak3.php">Zadatak 3</a></li>
+          <li><a target="_blank" href="zadatak4.php">Zadatak 4</a></li>
+          <li><a target="_blank" href="zadatak5.php">Zadatak increment/dekrement</a></li>
+          <li><a target="_blank" href="zadatak6.php">Ispiši zbroj svih primljenih brojeva</a></li>
+        </ul>
+      </li>
     </ul>
   </div>
-  
 </div>
