@@ -2,7 +2,8 @@
 
 class Request{
 
-    public static function getRuta(){
+    public static function getRuta()
+    {
         $ruta='';
         if(isset($_SERVER['REDIRECT_PATH_INFO'])){
             $ruta = $_SERVER['REDIRECT_PATH_INFO'];

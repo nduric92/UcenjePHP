@@ -17,7 +17,8 @@ $putanje = implode(PATH_SEPARATOR,$zaAutoload);
 
 set_include_path($putanje);
 
-spl_autoload_register(function($klasa){
+spl_autoload_register(function($klasa)
+{
     //echo 'u spl_autoload, tražim klasu ' . $klasa . '<br>';
     $putanje = explode(PATH_SEPARATOR,get_include_path());
     foreach($putanje as $putanja){
