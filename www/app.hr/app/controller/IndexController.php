@@ -19,7 +19,7 @@ class IndexController extends Controller
 
     public function kontakt()
     {
-        $this->view->render('kontakt');
+        $this->view->render('kontakt');//ukoliko se izmeni sadrzaj unutar zagrade pod navodnicima ucitava errorDatoteku
         
     }
 
