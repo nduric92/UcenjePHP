@@ -23,7 +23,7 @@ class View
             include_once $viewDatoteka; //ucitavamo datoteku
         }else{
             include_once BP_APP . 'view' . //ako ne postoji - 
-            DIRECTORY_SEPARATOR . $phtmlStranica . 'errorViewDatoteka.phtml'; //ucitava errorDatoteku
+            DIRECTORY_SEPARATOR . 'errorViewDatoteka.phtml'; //ucitava errorDatoteku
         }
         $sadrzaj=ob_get_clean();    //nakon ucitavanja jedne ili druge datoteke if-a --sve sa kesa salje u varijablu sadrzaj
         include_once BP_APP . 'view' . DIRECTORY_SEPARATOR
