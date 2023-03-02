@@ -1,0 +1,16 @@
+<form class="log-in-form" method="post"
+action="<?=App::config('url');?>prijava/autorizacija"><!-- OBAVEZNO UNETI METHOD I ACTION - OBRATI PAZNJU -->
+  <h4 class="text-center">Unesite pristupne podatke</h4>
+  <label>Email
+    <input type="email" name="email" 
+    placeholder="netko@nesto.com"
+    value="<?=$email?>"><!--UNETI NAME-->
+  </label>
+  <label>Lozinka
+    <input type="password" name="password" placeholder="Lozinka"><!--UNETI NAME-->
+  </label>
+  <p><input type="submit" class="button expanded" value="Prijava"></input></p>
+ <?=$poruka?>
+</form>
+
+
