@@ -3,6 +3,8 @@
 // ova datoteka će definirati temeljne preduvjete
 // i napraviti autoloading
 
+session_start();
+
 define('BP',__DIR__ . DIRECTORY_SEPARATOR);
 define('BP_APP', BP . 'app' . DIRECTORY_SEPARATOR);
 

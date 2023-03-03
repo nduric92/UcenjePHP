@@ -9,12 +9,17 @@ create table operater(
     ime varchar(50) not null,
     prezime varchar(50) not null,
     email varchar (50) not null,
-    lozinka char (61) not null
+    lozinka char (61) not null,
+    uloga varchar (20) not null
 );
 
-insert into operater (ime,prezime,email,lozinka)
+insert into operater (ime,prezime,email,lozinka,uloga)
 values ('edunova','Operater','operet@edunova.hr',
-'$2a$12$Oponj2zw8AqlI/oBPwf3dOTiHpEZJKhmltUasoVKC3rsLlQtKFrUm');
+'$2a$12$Oponj2zw8AqlI/oBPwf3dOTiHpEZJKhmltUasoVKC3rsLlQtKFrUm','oper');
+
+insert into operater (ime,prezime,email,lozinka,uloga)
+values ('admin','Operater','admin@edunova.hr',
+'$2a$12$Oponj2zw8AqlI/oBPwf3dOTiHpEZJKhmltUasoVKC3rsLlQtKFrUm','admin');
 
 create table smjer(
     sifra int not null primary key auto_increment,

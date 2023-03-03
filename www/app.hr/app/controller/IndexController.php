@@ -20,6 +20,14 @@ class IndexController extends Controller
         
     }
 
+    public function odjava()
+    {
+        unset($_SESSION['auth']);
+        session_destroy();
+        header('location:' . App::config('url'));
+        
+    }
+
 
     public function kontakt()
     {
