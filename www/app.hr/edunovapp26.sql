@@ -4,6 +4,9 @@ use edunovapp26;
 
 # c:\xampp\mysql\bin\mysql -uroot --default_character_set=utf8 < C:\Users\djuki\Documents\GitHub\UcenjePHP\www\app.hr\edunovapp26.sql
 
+# samo za cpanel
+alter database cesar_edunovapp26 charset utf8mb4;
+
 create table operater(
     sifra int not null primary key auto_increment,
     ime varchar(50) not null,

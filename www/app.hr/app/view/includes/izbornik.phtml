@@ -19,7 +19,7 @@
         <li>
           <a href="#">Programi</a>
           <ul class="vertical menu">
-            <li><a href="#">Smjerovi</a></li>
+            <li><a href="<?=App::config('url')?>smjer/index">Smjerovi</a></li>
             <li><a href="#">Polaznici</a></li>
             <li><a href="#">Predavači</a></li>
             <li><a href="#">Grupe</a></li>
@@ -35,9 +35,7 @@
     <?php if(!App::auth()): ?>
         <li><a href="<?=App::config('url');?>index/prijava">Prijava</a></li>
         <?php else: ?>
-          <li><a href="<?=App::config('url');?>index/odjava">Odjava <?php 
-            echo App::operater()
-            ?></a></li>
+          <li><a href="<?=App::config('url');?>index/odjava">Odjava <?php echo App::operater()?></a></li>
        <?php endif; ?>
     </ul>
   </div>

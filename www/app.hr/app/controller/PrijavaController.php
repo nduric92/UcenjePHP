@@ -24,7 +24,7 @@ class PrijavaController extends Controller
             return;    
         }
 
-        // ovdje sam siguran da imam email o lozinku
+        // ovdje sam siguran da imam email i lozinku
 
         $operater = Operater::autoriziraj($_POST['email'],$_POST['password']);//ovo radnimo nakon sto smo u modelu/operater napravili funckciju autoriziraj()
 
