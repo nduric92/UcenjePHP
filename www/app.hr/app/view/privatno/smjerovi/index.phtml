@@ -1,4 +1,4 @@
-<a href="" class="success button expanded">
+<a href="<?=App::config('url')?>smjer/novi" class="success button expanded">
     Dodaj novi smjer
 </a>
 
@@ -26,7 +26,7 @@
                 <td><?=$red->trajanje?></td>
                 <td><i class="fi-<?=$red->certificiran?>"></i></td>
                 <td>
-                    <a href=""><i class="fi-pencil"></i></a>    
+                    <a href="<?=App::config('url')?>smjer/promjena<?=$red->sifra?>"><i class="fi-pencil"></i></a>    
                     <a href=""><i class="fi-trash"></i></a>
                 </td>
             </tr>
