@@ -9,8 +9,22 @@ class Smjer
         $veza = DB::getInstance();
         $izraz = $veza->prepare('
         
-            select * from smjer
-            order by naziv asc
+        select 	a.sifra, 
+                a.naziv,
+                a.cijena,
+                a.upisnina,
+                a.trajanje,
+                a.certificiran,
+                count(b.sifra) as grupa
+        from smjer a 
+        left join grupa b on a.sifra=b.smjer
+        group by 	a.sifra, 
+                    a.naziv,
+                    a.cijena,
+                    a.upisnina,
+                    a.trajanje,
+                    a.certificiran
+        order by a.naziv asc;
         
         ');
         $izraz->execute();
@@ -60,7 +74,21 @@ class Smjer
             where sifra=:sifra
         
         ');
-        $izraz->execute($parametri);
+    }
+
+    public static function delete($sifra)
+    {
+        $veza = DB::getInstance();
+        $izraz = $veza->prepare('
+        
+            delete from smjer
+            where sifra=:sifra
+        
+        ');
+        $izraz->execute([
+            'sifra'=>$sifra
+        ]);
+        $izraz->execute();
     }
 
     public static function postojiIstiNazivUBazi($s)

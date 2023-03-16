@@ -103,7 +103,16 @@ class SmjerController extends AutorizacijaController
             'poruka'=>'Uspješno promjenjeno'
         ]);  
 
+    }
 
+    public function brisanje($sifra=0){
+        $sifra=(int)$sifra;
+        if($sifra===0){
+            header('location: ' . App::config('url') . 'index/odjava');
+            return;
+        }
+        Smjer::delete($sifra);
+        header('location: ' . App::config('url') . 'smjer/index');
     }
 
     private function pozoviView($parametri)

@@ -4,20 +4,14 @@ class App{
     // Ova metoda ima zadatak saznati što želiš i to pokrenuti
     public static function start()
     {
-
         $ruta = Request::getRuta();
-
         $djelovi = explode('/',substr($ruta,1));
-
         $controller='';
-
-        if(!isset($djelovi[0]) || $djelovi[0]==='')
-        {
+        if(!isset($djelovi[0]) || $djelovi[0]===''){
             $controller='IndexController';
         }else{
             $controller = ucfirst($djelovi[0]) . 'Controller';
         }
-
         $metoda='';
         if(!isset($djelovi[1]) || $djelovi[1]==='' ){
             $metoda='index';
@@ -25,16 +19,28 @@ class App{
             $metoda=$djelovi[1];
         }
 
-        if(!(class_exists($controller) && method_exists($controller,$metoda))){
-            echo 'Ne postoji ' . $controller . '-&gt;' . $metoda;
-            return;
+        $parametar='';
+        if(!isset($djelovi[2]) || $djelovi[2]==='' ){
+            $parametar='';
+        }else{
+            $parametar=$djelovi[2];
         }
 
-        // izvedi ju
+        if(!(class_exists($controller) && method_exists($controller,$metoda))){
+            $v = new View();
+            $v->render('notFoundController',[
+                'poruka'=>'Ne postoji ' . $controller . '-&gt;' . $metoda
+            ]);
+            //echo 'Ne postoji ' . $controller . '-&gt;' . $metoda;
+            return;
+        }
         $instanca = new $controller();
-        $instanca->$metoda();
-
-
+        if(strlen($parametar)>0){
+            $instanca->$metoda($parametar);
+        }else{
+            $instanca->$metoda();
+        }
+        
     }
 
 
