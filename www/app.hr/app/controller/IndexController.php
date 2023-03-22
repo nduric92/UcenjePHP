@@ -2,17 +2,24 @@
 
 class IndexController extends Controller
 {
-
     // kasnije ćemo staviti konstruktor
 
     public function index()
     {
-        // $c = new Controller();   Cannot instantiate abstract class Controller
-        $this->view->render('index');
+
+       $this->view->render('index');
+        
     }
 
     public function prijava()
     {
+
+        if(App::auth()){
+            $np = new NadzornaplocaController();
+            $np->index();
+            return;
+        }
+
      $this->view->render('prijava',[
         'poruka'=>'',
         'email'=>''
@@ -28,14 +35,12 @@ class IndexController extends Controller
         
     }
 
-
     public function kontakt()
     {
-        $this->view->render('kontakt');//ukoliko se izmeni sadrzaj unutar zagrade pod navodnicima ucitava errorDatoteku
+        $this->view->render('kontakt');
         
     }
 
-    
     public function api()
     {
         $this->view->api([
@@ -49,8 +54,6 @@ class IndexController extends Controller
         ]);
         
     }
-
-
 
 
 }

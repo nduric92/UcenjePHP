@@ -1,14 +1,16 @@
 <?php
 
-class SmjerController extends AutorizacijaController
+class SmjerController 
+extends AutorizacijaController
+implements ViewSucelje
 {
 
     private $viewPutanja = 'privatno' . 
     DIRECTORY_SEPARATOR . 'smjerovi' . 
     DIRECTORY_SEPARATOR;
-    private $nf;//number format
-    private $e;//za pocetne podatke
-    private $poruka='';
+    private $nf;
+    private $e;
+    private $poruke=[];
 
     public function __construct()
     {
@@ -17,12 +19,12 @@ class SmjerController extends AutorizacijaController
         $this->nf->setPattern(App::config('formatBroja'));
     }
 
+
     public function index()
     {        
-        $this->view->render($this->viewPutanja . 
+     $this->view->render($this->viewPutanja . 
             'index',[
                 'podaci'=>$this->prilagodiPodatke(Smjer::read()),
-                'css'=>'smjer.css'
             ]);   
     }
 
@@ -31,7 +33,7 @@ class SmjerController extends AutorizacijaController
        if($_SERVER['REQUEST_METHOD']==='GET'){
         $this->pozoviView([
             'e'=>$this->pocetniPodaci(),
-            'poruka'=>$this->poruka
+            'poruke'=>$this->poruke,
         ]);
         return;
        } //ovdje sam siguran da nije GET, za nas je onda POST
@@ -39,31 +41,19 @@ class SmjerController extends AutorizacijaController
        if(!$this->kontrolaNovi()){// kontrolirati podatke, ako nešto ne valja vratiti na view s porukom 
         $this->pozoviView([
             'e'=>$this->e,
-            'poruka'=>$this->poruka
+            'poruke'=>$this->poruke
         ]);
         return;
        }
        $this->pripremiZaBazu(); // priprema za bazu
        Smjer::create((array)$this->e);  //ako je sve OK spremiti u bazu
-       $this->pozoviView([
-            'e'=>$this->pocetniPodaci(),
-            'poruka'=>'Uspješno spremljeno'
-        ]);
+       header('location: ' . App::config('url') . 'smjer');
     }
 
     public function promjena($sifra='')
     {
         if($_SERVER['REQUEST_METHOD']==='GET'){
-            if(strlen(trim($sifra))===0){
-                header('location: ' . App::config('url') . 'index/odjava');
-                return;
-            }
-
-            $sifra=(int)$sifra;
-            if($sifra===0){
-                header('location: ' . App::config('url') . 'index/odjava');
-                return;
-            }
+            $this->provjeraIntParametra($sifra);
 
             $this->e = Smjer::readOne($sifra);
 
@@ -78,10 +68,11 @@ class SmjerController extends AutorizacijaController
             $this->view->render($this->viewPutanja . 
             'promjena',[
                 'e'=>$this->e,
-                'poruka'=>'Promjenite podatke po želji'
+                'poruke'=>'Promjenite podatke po želji'
             ]);  
             return;
         }
+
 
         // ovdje je POST
         $this->pripremiZaView();
@@ -89,7 +80,7 @@ class SmjerController extends AutorizacijaController
             $this->view->render($this->viewPutanja . 
             'promjena',[
                 'e'=>$this->e,
-                'poruka'=>$this->poruka
+                'poruke'=>$this->poruke
             ]);  
          return;
         }
@@ -97,11 +88,13 @@ class SmjerController extends AutorizacijaController
         $this->e->sifra=$sifra;
         $this->pripremiZaBazu(); // priprema za bazu
         Smjer::update((array)$this->e);
+        $this->poruke['poruka']='Uspješno promjenjeno';
         $this->view->render($this->viewPutanja . 
         'promjena',[
             'e'=>$this->e,
-            'poruka'=>'Uspješno promjenjeno'
+            'poruke'=>$this->poruke
         ]);  
+
 
     }
 
@@ -121,13 +114,13 @@ class SmjerController extends AutorizacijaController
        'novi',$parametri);  
     }
 
-    private function pripremiZaView()
+    public function pripremiZaView()
     {
         $this->e = (object)$_POST;
         $this->e->certificiran = $this->e->certificiran==='true' ? true : false;
     }
 
-    private function pripremiZaBazu()
+    public function pripremiZaBazu()
     {
         $this->e->cijena = $this->nf->parse($this->e->cijena);
        $this->e->upisnina = $this->nf->parse($this->e->upisnina);
@@ -137,30 +130,32 @@ class SmjerController extends AutorizacijaController
 
     private function kontrolaNovi()
     {
-        return $this->kontrolaNaziv() && $this->kontrolaCijena();
+        return $this->kontrolaNaziv() 
+        & $this->kontrolaCijena()
+        & $this->kontrolaTrajanje();
     }
 
     private function kontrolaPromjena()
     {
-        return  $this->kontrolaCijena();
+       return $this->kontrolaNovi();
     }
 
     private function kontrolaNaziv()
     {
         $s = $this->e->naziv;
         if(strlen(trim($s))===0){
-            $this->poruka='Naziv obavezno';
+            $this->poruke['naziv']='Naziv obavezno';
             return false;
         }
 
         if(strlen(trim($s))>50){
-            $this->poruka='Naziv ne smije imati više od 50 znakova';
+            $this->poruke['naziv']='Naziv ne smije imati više od 50 znakova';
             return false;
         }
 
 
         if(Smjer::postojiIstiNazivUBazi($s)){
-            $this->poruka='Isti naziv postoji u bazi';
+            $this->poruke['naziv']='Isti naziv postoji u bazi';
             return false; 
         }
 
@@ -171,32 +166,59 @@ class SmjerController extends AutorizacijaController
     {
 
         if(strlen(trim($this->e->cijena))===0){
-            $this->poruka='Cijena obavezno';
+            $this->poruke['cijena']='Cijena obavezno';
             return false;
         }
 
         $cijena = $this->nf->parse($this->e->cijena);
         //Log::info($cijena);
         if(!$cijena){
-            $this->poruka='Cijena nije u dobrom formatu';
+            $this->poruke['cijena']='Cijena nije u dobrom formatu';
             return false;
         }
 
         if($cijena<=0){
-            $this->poruka='Cijena mora biti veća od nule';
+            $this->poruke['cijena']='Cijena mora biti veća od nule';
             return false;  
         }
 
         if($cijena>3000){
-            $this->poruka='Cijena ne smije biti veća od 3000';
+            $this->poruke['cijena']='Cijena ne smije biti veća od 3000';
             return false;  
         }
 
 
         return true;
     }
-    
-    private function pocetniPodaci()
+
+    private function kontrolaTrajanje()
+    {
+        $s = $this->e->trajanje;
+        if(strlen(trim($s))===0){
+            return true;
+        }
+
+        $broj = (int)$s;
+
+        if($broj===0){
+            $this->poruke['trajanje']='Trajanje mora biti cijeli broj veći od 0';
+            return false;  
+        }
+
+        if($broj<0){
+            $this->poruke['trajanje']='Trajanje ne smije biti manje od 0';
+            return false;  
+        }
+
+        if($broj>1000){
+            $this->poruke['trajanje']='Maksimalno trajanje je 1000 sati';
+            return false;  
+        }
+
+        return true;
+    }
+
+    public function pocetniPodaci()
     {
         $e = new stdClass();
         $e->naziv='';

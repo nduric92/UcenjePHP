@@ -1,9 +1,14 @@
 <?php
 
-class Predavac
+class Polaznik
 {
-    public static function read()
+    public static function read($uvjet='',$stranica=1)
     {
+        $uvjet = '%' . $uvjet . '%';
+        $brps = App::config('brps');
+        $pocetak = ($stranica * $brps) - $brps;
+
+
         $veza = DB::getInstance();
         $izraz = $veza->prepare('
         
@@ -12,22 +17,30 @@ class Predavac
                 b.prezime,
                 b.email,
                 b.oib,
-                a.iban, 
-                count(c.sifra) as grupa
+                a.brojugovora, 
+                count(c.grupa) as clan
 		from 
-        predavac a 
+        polaznik a 
         inner join osoba b on a.osoba=b.sifra
-        left join grupa c on a.sifra=c.predavac 
+        left join clan c on a.sifra=c.polaznik 
+        where concat(b.ime, \' \', b.prezime, \' \', ifnull(b.oib,\'\'))
+        like :uvjet
         group by a.sifra,
                 b.ime,
                 b.prezime,
                 b.email,
                 b.oib,
-                a.iban 
-        order by b.prezime, b.ime;
+                a.brojugovora 
+        order by b.prezime, b.ime
+        limit :pocetak, :brps
         
         ');
+        $izraz->bindValue('pocetak',$pocetak,PDO::PARAM_INT);
+        $izraz->bindValue('brps',$brps,PDO::PARAM_INT);
+        $izraz->bindParam('uvjet',$uvjet);
+
         $izraz->execute();
+
         return $izraz->fetchAll();
     }
 
@@ -41,9 +54,9 @@ class Predavac
                 b.prezime,
                 b.email,
                 b.oib,
-                a.iban
+                a.brojugovora
 		from 
-        predavac a 
+        polaznik a 
         inner join osoba b on a.osoba=b.sifra
         where a.sifra=:sifra
         order by b.prezime, b.ime ;
@@ -54,6 +67,29 @@ class Predavac
         ]);
         return $izraz->fetch();
     }
+
+    public static function ukupnoPolaznika($uvjet='')
+    {
+        
+        $uvjet = '%' . $uvjet . '%';
+        $veza = DB::getInstance();
+        $izraz = $veza->prepare('
+        
+        select 	count(*)
+        from 
+        polaznik a 
+        inner join osoba b on a.osoba=b.sifra 
+        where concat(b.ime, \' \', b.prezime, \' \', 
+        ifnull(b.oib,\'\'))
+        like :uvjet;
+        
+        ');
+        $izraz->execute([
+            'uvjet'=>$uvjet
+        ]);
+        return $izraz->fetchColumn();
+    }
+
 
     public static function create($parametri)
     {
@@ -77,13 +113,13 @@ class Predavac
 
         $izraz=$veza->prepare('
         
-        insert into predavac (osoba,iban) 
-        values (:osoba,:iban)
+        insert into polaznik (osoba,brojugovora) 
+        values (:osoba,:brojugovora)
         
         ');
         $izraz->execute([
             'osoba'=>$sifraOsoba,
-            'iban'=>$parametri['iban']
+            'brojugovora'=>$parametri['brojugovora']
         ]);
 
 
@@ -97,7 +133,7 @@ class Predavac
         $veza->beginTransaction();
         $izraz = $veza->prepare('
         
-            select osoba from predavac where sifra=:sifra
+            select osoba from polaznik where sifra=:sifra
         
         ');
         $izraz->execute([
@@ -125,14 +161,14 @@ class Predavac
 
         $izraz = $veza->prepare('
         
-            update predavac set
-                iban=:iban
+            update polaznik set
+                brojugovora=:brojugovora
             where sifra=:sifra
         
         ');
         $izraz->execute([
             'sifra'=>$parametri['sifra'],
-            'iban'=>$parametri['iban']
+            'brojugovora'=>$parametri['brojugovora']
         ]);
 
 
@@ -146,7 +182,7 @@ class Predavac
         $veza->beginTransaction();
         $izraz = $veza->prepare('
         
-            select osoba from predavac where sifra=:sifra
+            select osoba from polaznik where sifra=:sifra
         
         ');
         $izraz->execute([
@@ -156,7 +192,7 @@ class Predavac
 
         $izraz = $veza->prepare('
         
-            delete from predavac
+            delete from polaznik
             where sifra=:sifra
         
         ');
@@ -183,7 +219,7 @@ class Predavac
     {
         if($sifra>0){
             $sql = ' select count(b.sifra) 
-            from predavac a inner join osoba b
+            from polaznik a inner join osoba b
             on a.osoba=b.sifra where b.oib=:oib ';
         }else{
             $sql = ' select count(a.sifra) 

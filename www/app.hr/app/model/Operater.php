@@ -17,7 +17,7 @@ class Operater
     }
 
 
-    public static function autoriziraj($email,$password)//PRVO RADIMO OVU
+    public static function autoriziraj($email,$password)
     {
         $veza = DB::getInstance();
         $izraz = $veza->prepare('
@@ -39,7 +39,7 @@ class Operater
             return null;
         }
 
-        unset($operater->lozinka);//unset funkcija se koristi da se lozinka NE SPREMA u session file
+        unset($operater->lozinka);
 
         return $operater;
     }

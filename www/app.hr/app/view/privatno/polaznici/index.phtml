@@ -1,8 +1,14 @@
-<a href="<?=App::config('url')?>predavac/novi" 
+<a href="<?=App::config('url')?>polaznik/novi" 
 class="success button expanded">
-    Dodaj novog predavača
+    Dodaj novog polaznika
 </a>
 
+<form action="" method="get">
+    <input type="text" name="uvjet"
+    placeholder="dio imena, prezimena ili OIB-a"
+    value="<?=$uvjet?>" >
+</form>
+<?php include 'stranicenje.phtml' ?>
 <div class="grid-x grid-padding-x">
     <?php foreach($podaci as $red): ?>
         <div class="large-3 medium-6 small-12 cell">
@@ -12,10 +18,13 @@ class="success button expanded">
 
                 <p><?=$red->ime?> <?=$red->prezime?></h1><hr>
                 <?php
-                $par=['predavac', $red->ime . ' ' . $red->prezime, $red->grupa==0];
+                $par=['polaznik', $red->ime . ' ' . $red->prezime, $red->clan==0];
                 include BP_APP . 'view/includes/promjenabrisanje.phtml';
                 ?>
             </div>
         </div>
     <?php endforeach;?>
 </div>
+
+
+<?php include 'stranicenje.phtml' ?>

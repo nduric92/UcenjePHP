@@ -1,20 +1,45 @@
 <?php
 
-class PredavacController 
+class PolaznikController 
 extends AutorizacijaController
 implements ViewSucelje
 {
     private $viewPutanja = 'privatno' . 
-    DIRECTORY_SEPARATOR . 'predavaci' . 
+    DIRECTORY_SEPARATOR . 'polaznici' . 
     DIRECTORY_SEPARATOR;
     private $e;
     private $poruka='';
 
     public function index()
     {        
+
+        if(isset($_GET['uvjet'])){
+            $uvjet = trim($_GET['uvjet']);
+        }else{
+            $uvjet='';
+        }
+
+        if(isset($_GET['stranica'])){
+            $stranica = (int)$_GET['stranica'];
+            if($stranica<1){
+                $stranica=1;
+            }
+        }else{
+            $stranica=1;
+        }
+
+        $up = Polaznik::ukupnoPolaznika($uvjet);
+        
+        $zadnja = (int)ceil($up/App::config('brps'));
+
+
+
      $this->view->render($this->viewPutanja . 
             'index',[
-                'podaci'=>Predavac::read()
+                'podaci'=>Polaznik::read($uvjet,$stranica),
+                'uvjet'=>$uvjet,
+                'stranica'=>$stranica,
+                'zadnja'=>$zadnja
             ]);   
     }
     public function novi()
@@ -22,7 +47,7 @@ implements ViewSucelje
         if($_SERVER['REQUEST_METHOD']==='GET'){
             $this->view->render($this->viewPutanja .
             'detalji',[
-                'legend'=>'Unos novog predavača',
+                'legend'=>'Unos novog polaznik',
                 'akcija'=>'Dodaj',
                 'poruka'=>'Popunite sve tražene podatke',
                 'e'=>$this->pocetniPodaci()
@@ -35,12 +60,12 @@ implements ViewSucelje
            try {
             $this->kontrola();
             $this->pripremiZaBazu();
-            Predavac::create((array)$this->e);
-            header('location:' . App::config('url') . 'predavac');
+            Polaznik::create((array)$this->e);
+            header('location:' . App::config('url') . 'polaznik');
            } catch (\Exception $th) {
             $this->view->render($this->viewPutanja .
             'detalji',[
-                'legend'=>'Unos novog predavača IMATE GREŠKE',
+                'legend'=>'Unos novog polaznika IMATE GREŠKE',
                 'akcija'=>'Dodaj',
                 'poruka'=>$this->poruka,
                 'e'=>$this->e
@@ -53,7 +78,7 @@ implements ViewSucelje
         if($_SERVER['REQUEST_METHOD']==='GET'){
            $this->provjeraIntParametra($sifra);
 
-            $this->e = Predavac::readOne($sifra);
+            $this->e = Polaznik::readOne($sifra);
 
             if($this->e==null){
                 header('location: ' . App::config('url') . 'index/odjava');
@@ -62,7 +87,7 @@ implements ViewSucelje
 
             $this->view->render($this->viewPutanja .
             'detalji',[
-                'legend'=>'Promjena predavača',
+                'legend'=>'Promjena polaznika',
                 'akcija'=>'Promjeni',
                 'poruka'=>'Promjenite željene podatke',
                 'e'=>$this->e
@@ -77,12 +102,12 @@ implements ViewSucelje
             $this->e->sifra=$sifra;
             $this->kontrola();
             $this->pripremiZaBazu();
-            Predavac::update((array)$this->e);
-            header('location:' . App::config('url') . 'predavac');
+            Polaznik::update((array)$this->e);
+            header('location:' . App::config('url') . 'polaznik');
            } catch (\Exception $th) {
             $this->view->render($this->viewPutanja .
             'detalji',[
-                'legend'=>'Promjena predavača IMATE GREŠKE',
+                'legend'=>'Promjena polaznika IMATE GREŠKE',
                 'akcija'=>'Promjena',
                 'poruka'=>$this->poruka . ' ' . $th->getMessage(),
                 'e'=>$this->e
@@ -102,12 +127,12 @@ implements ViewSucelje
     private function kontrolaOIBIstiUBazi()
     {
         if(isset($this->e->sifra)){
-            if(!Predavac::postojiIstiOIB($this->e->oib,$this->e->sifra)){
+            if(!Polaznik::postojiIstiOIB($this->e->oib,$this->e->sifra)){
                 $this->poruka='Isti OIB postoji u bazi';
                 throw new Exception('1');
             }
         }else{
-            if(!Predavac::postojiIstiOIB($this->e->oib)){
+            if(!Polaznik::postojiIstiOIB($this->e->oib)){
                 $this->poruka='Isti OIB postoji u bazi';
                 throw new Exception('2');
             }
@@ -164,6 +189,9 @@ implements ViewSucelje
 
     }
 
+ 
+
+
     public function brisanje($sifra=0)
     {
         $sifra=(int)$sifra;
@@ -171,8 +199,8 @@ implements ViewSucelje
             header('location: ' . App::config('url') . 'index/odjava');
             return;
         }
-        Predavac::delete($sifra);
-        header('location: ' . App::config('url') . 'predavac/index');
+        Polaznik::delete($sifra);
+        header('location: ' . App::config('url') . 'polaznik/index');
     }
 
 
@@ -183,7 +211,7 @@ implements ViewSucelje
         $e->prezime='';
         $e->email='';
         $e->oib='';
-        $e->iban='';
+        $e->brojugovora='';
         return $e;
 
     }

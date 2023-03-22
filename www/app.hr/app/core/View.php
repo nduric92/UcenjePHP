@@ -13,6 +13,14 @@ class View
     
     public function render($phtmlStranica,$parametri=[]) //na koju stranicu se salje koji parametar
     {
+        //Log::info($phtmlStranica);
+        $cssDatoteka = BP . 'public' .
+        DIRECTORY_SEPARATOR . 'css' .
+        DIRECTORY_SEPARATOR . $phtmlStranica . '.css';
+        if(file_exists($cssDatoteka)){
+            $css=str_replace('\\','/',$phtmlStranica) . '.css';
+        }
+
         $viewDatoteka = BP_APP . 'view' . //prvo ucitava base path APP pa u njemu view 
         DIRECTORY_SEPARATOR . $phtmlStranica . '.phtml'; //pa odvaja direktorij separatorom nakon toga index .phtml
         
