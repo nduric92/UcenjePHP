@@ -164,6 +164,9 @@ implements ViewSucelje
 
     }
 
+ 
+
+
     public function brisanje($sifra=0)
     {
         $sifra=(int)$sifra;

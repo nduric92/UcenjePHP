@@ -74,6 +74,7 @@ class Smjer
             where sifra=:sifra
         
         ');
+        $izraz->execute($parametri);
     }
 
     public static function delete($sifra)
@@ -105,6 +106,20 @@ class Smjer
         ]);
         $sifra=$izraz->fetchColumn();
         return $sifra>0;
+    }
+
+    public static function prviSmjer()
+    {
+        $veza = DB::getInstance();
+        $izraz = $veza->prepare('
+        
+            select sifra from smjer
+            order by sifra limit 1
+        
+        ');
+        $izraz->execute();
+        $sifra=$izraz->fetchColumn();
+        return $sifra;
     }
 
 }

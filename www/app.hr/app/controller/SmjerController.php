@@ -21,10 +21,24 @@ implements ViewSucelje
 
 
     public function index()
-    {        
+    {     
+        
+        $poruka='';
+        if(isset($_GET['p'])){
+            switch ((int)$_GET['p']) {
+                case 1:
+                    $poruka='Prvo kreirajte smjer da bi mogli kreirati grupu';
+                    break;
+                
+                default:
+                    $poruka='';
+                    break;
+            }
+        }
      $this->view->render($this->viewPutanja . 
             'index',[
                 'podaci'=>$this->prilagodiPodatke(Smjer::read()),
+                'poruka'=>$poruka
             ]);   
     }
 
@@ -231,6 +245,8 @@ implements ViewSucelje
 
     private function prilagodiPodatke($smjerovi)
     {
+
+    
         foreach($smjerovi as $s){
             $s->cijena=$this->formatIznosa($s->cijena);
             $s->upisnina=$this->formatIznosa($s->upisnina);
