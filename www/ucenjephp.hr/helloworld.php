@@ -36,3 +36,5 @@
     <?php include_once 'skripte.php'; ?>
   </body>
 </html>
+<?php
+echo 'PHP version: ' . phpversion();
